@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search-input',
@@ -15,7 +15,9 @@ export class SearchInputComponent implements OnInit {
   subscription: Subscription;
   
   constructor() {
-    this.subscription = this.inputValueChanged.pipe()
+    this.subscription = this.inputValueChanged.pipe(
+      debounceTime(300), 
+      distinctUntilChanged())
       .subscribe(value => {
         this.onChangeValue.emit(value);
       });

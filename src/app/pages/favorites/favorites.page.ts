@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { FavoritesService } from './services/favorites.service';
 
 @Component({
@@ -8,13 +9,17 @@ import { FavoritesService } from './services/favorites.service';
   styleUrls: ['./favorites.page.scss'],
 })
 export class FavoritesPage implements OnInit {
+  subscription: Subscription;
 
   constructor(public service: FavoritesService, private router: Router) { }
 
   ngOnInit() {
-    const favoritesMoviesIds = this.getFavorites();
-    console.log(favoritesMoviesIds)
-    this.service.getMoviesData(favoritesMoviesIds);
+    this.subscription = this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        const favoritesMoviesIds = this.getFavorites();
+        this.service.getMoviesData(favoritesMoviesIds);
+      }
+  });
   }
 
   getFavorites(){
@@ -24,5 +29,9 @@ export class FavoritesPage implements OnInit {
 
   onClickCard(movieId: number){
     this.router.navigate(['movie-details/' + movieId])
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 }

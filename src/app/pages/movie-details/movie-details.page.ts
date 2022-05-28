@@ -20,7 +20,6 @@ export class MovieDetailsPage implements OnInit {
   ngOnInit() {
     this.movieId = this.activatedRoute.snapshot.paramMap.get('id');
     this.service.getMovie(parseInt(this.movieId));
-    this.service.movie$.subscribe(s => console.log(s))
   }
 
   async addToFavs(movieId: number, movieName: string){
