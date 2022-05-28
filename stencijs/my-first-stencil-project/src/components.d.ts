@@ -20,6 +20,10 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MyGridComponent {
+        "data": any;
+        "headers": any;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +32,15 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyGridComponentElement extends Components.MyGridComponent, HTMLStencilElement {
+    }
+    var HTMLMyGridComponentElement: {
+        prototype: HTMLMyGridComponentElement;
+        new (): HTMLMyGridComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "my-grid-component": HTMLMyGridComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +58,13 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MyGridComponent {
+        "data"?: any;
+        "headers"?: any;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "my-grid-component": MyGridComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +72,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-grid-component": LocalJSX.MyGridComponent & JSXBase.HTMLAttributes<HTMLMyGridComponentElement>;
         }
     }
 }

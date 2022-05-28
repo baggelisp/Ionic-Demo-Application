@@ -9,6 +9,9 @@
     <script nomodule src="/build/my-first-stencil-project.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <my-grid-component 
+    headers='[{"id": "company", "label": "Company"}, {"id": "contact", "label": "Contact"}, {"id": "country", "label": "Country"}]'
+    data='[ { "company": "Alfreds Futterkiste", "contact":  "Maria Anders", "country": "Germany" }, { "company": "Berglunds snabbköp", "contact":  "Christina Berglund", "country": "Sweden" } ]'
+    ></my-grid-component>
   </body>
 </html>
