@@ -15,6 +15,9 @@
     <div class="search-input-wp">
       <app-search-input (onChangeValue)="onSearchChangeValue($event)"></app-search-input>
     </div>
+    <div class="ion-text-center ion-margin-top">
+      <ion-text>{{isSearchOpen ? 'Search result' : 'Popular movies'}}</ion-text>
+    </div>
     <ng-container *ngFor="let movie of service.movies$ | async">
       <app-movie-card (onClickMovieCard)="onClickCard(movie.id)" [movie]="movie"></app-movie-card>
     </ng-container>
