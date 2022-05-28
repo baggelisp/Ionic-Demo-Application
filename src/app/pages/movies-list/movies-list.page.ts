@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MoviesListService } from './services/movies-list.service';
 
 @Component({
   selector: 'app-movies-list',
@@ -11,16 +12,19 @@ export class MoviesListPage implements OnInit {
   searchValue = '';
 
 
-  constructor() { }
+  constructor(public service: MoviesListService) { }
 
   ngOnInit() {
+    this.service.getPopularMovies();
   }
 
   onSearchChangeValue(value: string) {
     this.isSearchOpen=true;
     this.searchValue = value;
-    console.log(value)
-    // this.service.searchMovie(this.searchValue);
+  }
+
+  onClickCard(movieId: number){
+
   }
 
 }

@@ -12,19 +12,11 @@
     <ion-toolbar>
       <ion-title size="large">Movies list</ion-title>
     </ion-toolbar>
-
     <div class="search-input-wp">
       <app-search-input (onChangeValue)="onSearchChangeValue($event)"></app-search-input>
     </div>
-    
-
-
-    <app-movie-card></app-movie-card>
-    <app-movie-card></app-movie-card>
-    <app-movie-card></app-movie-card>
-
-
-
-
+    <ng-container *ngFor="let movie of service.movies$ | async">
+      <app-movie-card (onClickMovieCard)="onClickCard(movie.id)" [movie]="movie"></app-movie-card>
+    </ng-container>
   </ion-header>
 </ion-content>

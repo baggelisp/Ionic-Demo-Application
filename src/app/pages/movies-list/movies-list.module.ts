@@ -11,6 +11,7 @@ import { MoviesListApi } from './services/movies-list.api';
 import { MoviesListService } from './services/movies-list.service';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     IonicModule,
     MoviesListPageRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   declarations: [MoviesListPage, MovieCardComponent],
   providers: [
