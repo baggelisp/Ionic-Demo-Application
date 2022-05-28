@@ -49,7 +49,9 @@
 
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button (click)="addToFavs(movie.id, movie.title)" color="danger">
-      <ion-icon ios="heart{{ favService.isMovieInFavorites(movie.id?.toString()) ? '-outline' : ''}}"></ion-icon>
+      <ion-icon *ngIf="!isOnFavotites" ios="heart-outline"></ion-icon>
+      <ion-icon *ngIf="isOnFavotites" ios="heart"></ion-icon>
+
     </ion-fab-button>
   </ion-fab>
 </ng-container>
