@@ -13,4 +13,7 @@
       <ion-title size="large">Favorites</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ng-container *ngFor="let movie of service.movies$ | async">
+    <app-movie-card (onClickMovieCard)="onClickCard(movie.id)" [movie]="movie"></app-movie-card>
+  </ng-container>
 </ion-content>

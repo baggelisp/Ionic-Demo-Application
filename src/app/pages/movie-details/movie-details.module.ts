@@ -10,6 +10,8 @@ import { MovieDetailsPage } from './movie-details.page';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieDetailsApi } from './services/movie-details.api';
 import { MovieDetailsService } from './services/movie-details.service';
+import { FavoritesApi } from '../favorites/services/favorites.api';
+import { FavoritesService } from '../favorites/services/favorites.service';
 
 @NgModule({
   imports: [
@@ -22,7 +24,9 @@ import { MovieDetailsService } from './services/movie-details.service';
   declarations: [MovieDetailsPage],
   providers: [
     MovieDetailsService,
-    MovieDetailsApi
+    MovieDetailsApi,
+    FavoritesService,
+    FavoritesApi
   ]
 })
 export class MovieDetailsPageModule {}

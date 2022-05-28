@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { FavoritesService } from '../favorites/services/favorites.service';
 import { MovieDetailsService } from './services/movie-details.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class MovieDetailsPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, 
     private alertCtrl: AlertController,
-    public service: MovieDetailsService) { }
+    public service: MovieDetailsService,
+    private favService: FavoritesService) { }
 
   ngOnInit() {
     this.movieId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -22,17 +24,13 @@ export class MovieDetailsPage implements OnInit {
   }
 
   async addToFavs(movieId: number, movieName: string){
-    console.log(movieId)
+    this.favService.saveMovieToCollection(movieId.toString())
     const alert = await this.alertCtrl.create({
       cssClass: 'ion-text-start',
       header: 'Added!',
       message:  'You added movie ' + movieName + ' to your favorites!',
       buttons: ['OK']
     });
-
     await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
   }
 }

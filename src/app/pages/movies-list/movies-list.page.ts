@@ -32,7 +32,6 @@ export class MoviesListPage implements OnInit {
 
   onClickCard(movieId: number){
     this.router.navigate(['movie-details/' + movieId])
-
   }
 
 }
