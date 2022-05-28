@@ -15,7 +15,7 @@ export class MovieDetailsPage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, 
     private alertCtrl: AlertController,
     public service: MovieDetailsService,
-    private favService: FavoritesService) { }
+    public favService: FavoritesService) { }
 
   ngOnInit() {
     this.movieId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -24,11 +24,20 @@ export class MovieDetailsPage implements OnInit {
   }
 
   async addToFavs(movieId: number, movieName: string){
-    this.favService.saveMovieToCollection(movieId.toString())
+    let title = 'Added!';
+    let message = 'You added movie ' + movieName + ' to your favorites!';
+    if (this.favService.isMovieInFavorites(movieId.toString())) {
+      this.favService.removeMovieToCollection(movieId.toString());
+      message = 'You removed movie ' + movieName + ' to your favorites!';
+      title = 'Removed!'
+    } else {
+      this.favService.saveMovieToCollection(movieId.toString())
+    }
+
     const alert = await this.alertCtrl.create({
       cssClass: 'ion-text-start',
-      header: 'Added!',
-      message:  'You added movie ' + movieName + ' to your favorites!',
+      header: title,
+      message:  message,
       buttons: ['OK']
     });
     await alert.present();

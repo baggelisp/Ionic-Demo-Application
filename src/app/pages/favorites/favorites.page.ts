@@ -22,7 +22,6 @@ export class FavoritesPage implements OnInit {
     return favorites;
   }
 
-
   onClickCard(movieId: number){
     this.router.navigate(['movie-details/' + movieId])
   }
