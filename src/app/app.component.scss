@@ -117,3 +117,11 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+.menu-image{
+  max-width: 150px;
+  max-height: 150px;
+  background-color: beige;
+  border-radius: 50%;
+  margin: 20px auto 30px;
+}
