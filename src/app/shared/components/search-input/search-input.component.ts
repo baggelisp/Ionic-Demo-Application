@@ -24,8 +24,7 @@ export class SearchInputComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeInput(errors: any, text: any){
-    if (errors !== null) return;
+  changeInput(text: any){
     this.inputValueChanged.next((text?.target as HTMLTextAreaElement)?.value);
 	}
 
