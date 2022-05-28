@@ -1,0 +1,65 @@
+.movie-detail-container{
+    padding: 0 20px;
+}
+
+.movie-image{
+    max-height:400px;
+    width: 100%;
+    object-fit: contain;
+    object-position: top;
+}
+
+
+.genre, .lang {
+    background-color: antiquewhite;
+    border-radius: 30px;
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+
+.lang{
+    background-color: rgb(250, 215, 236);
+}
+
+.genre-chips {
+    display: flex;
+    justify-content: start;
+}
+
+.play-icon{
+    margin-right: 5px;
+}
+
+h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.star-icon{
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.m-l-20px{
+    margin-left: 20px;
+}
+
+.align-center{
+    display: flex;
+    align-items: center;
+} 
+
+.flex-start{
+    display: flex;
+    justify-content: flex-start;
+} 
+
+.m-top-20px{
+    margin-top: 20px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}

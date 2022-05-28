@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MoviesListService } from './services/movies-list.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class MoviesListPage implements OnInit {
   searchValue = '';
 
 
-  constructor(public service: MoviesListService) { }
+  constructor(private router: Router, public service: MoviesListService) { }
 
   ngOnInit() {
     this.service.getPopularMovies();
@@ -30,6 +31,7 @@ export class MoviesListPage implements OnInit {
   }
 
   onClickCard(movieId: number){
+    this.router.navigate(['movie-details/' + movieId])
 
   }
 
