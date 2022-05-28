@@ -21,6 +21,12 @@ export class MoviesListPage implements OnInit {
   onSearchChangeValue(value: string) {
     this.isSearchOpen=true;
     this.searchValue = value;
+    if (!this.searchValue) {
+      this.service.getPopularMovies();
+      this.isSearchOpen=false;
+      return;
+    }
+    this.service.searchMovie(this.searchValue);
   }
 
   onClickCard(movieId: number){
