@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesListPage implements OnInit {
 
+  isSearchOpen = false;
+  searchValue = '';
+
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSearchChangeValue(value: string) {
+    this.isSearchOpen=true;
+    this.searchValue = value;
+    console.log(value)
+    // this.service.searchMovie(this.searchValue);
   }
 
 }

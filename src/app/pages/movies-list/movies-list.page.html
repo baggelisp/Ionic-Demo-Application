@@ -12,5 +12,19 @@
     <ion-toolbar>
       <ion-title size="large">Movies list</ion-title>
     </ion-toolbar>
+
+    <div class="search-input-wp">
+      <app-search-input (onChangeValue)="onSearchChangeValue($event)"></app-search-input>
+    </div>
+    
+
+
+    <app-movie-card></app-movie-card>
+    <app-movie-card></app-movie-card>
+    <app-movie-card></app-movie-card>
+
+
+
+
   </ion-header>
 </ion-content>
